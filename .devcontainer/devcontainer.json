@@ -1,0 +1,15 @@
+{
+  "name": "codespaces",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "onCreateCommand": "command -v claude >/dev/null 2>&1 || (curl -fsSL https://claude.ai/install.sh | bash -s ${CLAUDE_CODE_VERSION:-stable})",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.local/bin",
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "AWS_REGION": "us-east-1"
+  }
+}
